@@ -1,0 +1,28 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title goodWeather
+    link(rel="stylesheet", type="text/css", href="styles/style.scss")
+  body
+    .wrapper
+      .content
+        h1.title Weather forecast
+        h3.subtitle Enter name of the city to see the weather forecast
+        .city__enter-block
+          input(placeholder="Enter name of the city").city__input-name
+          button(type="submit").city__input-submit
+        .info
+          .date
+          .forecast
+            ul.forecast__list
+              li.forecast__morning
+                .tempreture
+                .icon
+              li.forecast__now
+                .tempreture
+                .icon
+              li.forecast__evening
+                .tempreture
+                .icon          
