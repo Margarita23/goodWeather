@@ -13,6 +13,6 @@ Weather forecast app
     ```
     npm run start
     ```
-4. Open browser http://localhost:8080/hello or [CLICK]:http://localhost:8080/hello
+4. Open browser http://localhost:8080/hello or [CLICK](http://localhost:8080/hello)
 
 get resonse.
