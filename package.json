@@ -1,0 +1,31 @@
+{
+  "name": "goodWeather",
+  "version": "1.0.0",
+  "description": "Weather forecast app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Margarita23/goodWeather.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Margarita23/goodWeather/issues"
+  },
+  "homepage": "https://github.com/Margarita23/goodWeather#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2 ./index.js"
+  }
+}
