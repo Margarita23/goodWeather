@@ -17,5 +17,5 @@ app.listen(port, () => {
 });
 
 //ROUTERS USE
-var hello = require('./routers/hello.js');
-app.use('/hello', hello);
+var weather = require('./routers/weather.js');
+app.use('/weather', weather);
