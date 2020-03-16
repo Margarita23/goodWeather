@@ -1,2 +1,4 @@
 node_modules
 api-key.js
+db.js
+.env
