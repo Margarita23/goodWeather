@@ -29,7 +29,7 @@ const contr_weath = require('./controllers/weather');
 const api = require('./api-key');
 
 
-cron.schedule('* * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
   let url = `http://api.openweathermap.org/data/2.5/weather?q=Dnipro&appid=${api.api_key}`
 
   axios.get(url)
