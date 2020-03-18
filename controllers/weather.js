@@ -30,7 +30,7 @@ exports.index = function (cityName, res) {
     });
 };
 
-exports.create = function (req, res) {
+exports.create = function (res) {
     MongoClient.connect(mongo_url, function(err, client) {
         try {
             db = client.db(DB_NAME);

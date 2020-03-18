@@ -2,6 +2,12 @@
 var express = require('express');
 const app = express();
 
+const cron = require("node-cron");
+const fs = require("fs");
+
+const axios = require('axios');
+
+
 app.set("view engine", "pug");
 app.use(express.static(__dirname + '/public'));
 
@@ -19,20 +25,17 @@ app.listen(port, () => {
 var weather = require('./routers/weather.js');
 app.use('/weather', weather);
 
+const contr_weath = require('./controllers/weather');
+const api = require('./api-key');
 
-/////////////////////////////////////////////
-// const MongoClient = require('mongodb').MongoClient;
-// const url = `mongodb+srv://lildoc:vfvfgfgf23r@cluster0-oarvv.mongodb.net/goodWeather?retryWrites=true&w=majority`;
 
-// MongoClient.connect(url, function(err, client) {
-//   try {
-//     console.log("Connected successfully to server");
-//     db = client.db("goodWeather");
-    
-//     db.collection("weather").update({a:1}, {b:1}, {upsert:true}, function(err, result) {
-//     });
-//   } catch(err){
-//     console.log("\x1b[31m%s\x1b[0m","Error with connect BD");
-//     console.log(err.message);
-//   }
-// });
+cron.schedule('* * * * *', () => {
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=Dnipro&appid=${api.api_key}`
+
+  axios.get(url)
+    .then(function (response) {
+      contr_weath.create(response);
+    }).catch(function (error) {
+      console.log(error);
+    });
+});
