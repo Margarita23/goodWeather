@@ -3,7 +3,6 @@ var express = require('express');
 const app = express();
 
 const cron = require("node-cron");
-const fs = require("fs");
 
 const axios = require('axios');
 
@@ -11,14 +10,14 @@ const axios = require('axios');
 app.set("view engine", "pug");
 app.use(express.static(__dirname + '/public'));
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 4000;
 
 // ***** settings db *****
 var mysql = require('mysql');
 
 
 app.listen(port, () => {
-  console.log('Start app listening on port 8080!')
+  console.log('Start app listening on port 4000!')
 });
 
 //ROUTERS USE
@@ -39,3 +38,9 @@ cron.schedule('*/5 * * * *', () => {
       console.log(error);
     });
 });
+
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
+app.use(cors());
+app.use(bodyParser.json()); 

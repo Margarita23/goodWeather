@@ -18,23 +18,7 @@ router.get('/hello', function (req, res) {
     res.send('Hello world!');
 });
 
-// example http://localhost:8080/update/?city=Dnipro
-// router.get('/update', function (req, res) {
-    // let url = `http://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&appid=${api.api_key}`
-
-    // axios.get(url)
-    //     .then(function (response) {
-
-    //         weather.create(req, response);
-
-    //         res.status(200);
-    // }).catch(function (error) {
-    //     res.status(500);
-    // });
-    // console.log("HELL!!!");
-// });
-
-// example http://localhost:8080/weather/?city=Dnipro
+// example http://localhost:4000/weather/?city=Dnipro
 router.get('/', function(req, res){
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&appid=${api.api_key}`
 
@@ -49,7 +33,7 @@ router.get('/', function(req, res){
     });
 });
 
-// example http://localhost:8080/weather/getAllWeather?city=Dnipro
+// example http://localhost:4000/weather/getAllWeather?city=Dnipro
 router.get('/getAllWeather', function(req, res){
     weather.index(req.query.city, res);
 });

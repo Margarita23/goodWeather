@@ -3,3 +3,4 @@ api-key.js
 db.js
 .env
 setting-db.js
+./client/node_modules

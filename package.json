@@ -19,14 +19,18 @@
   },
   "homepage": "https://github.com/Margarita23/goodWeather#readme",
   "dependencies": {
+    "@vue/cli": "^4.2.3",
     "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.4",
     "mysql": "^2.18.1",
     "node-cron": "^2.0.3",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.2 ./index.js"
