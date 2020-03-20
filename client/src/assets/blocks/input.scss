@@ -1,0 +1,26 @@
+.city__enter-block {
+    display: flex;
+}
+
+.city__input-name {
+    border: none;
+    border-bottom: 2px solid rgb(25, 20, 94);
+    font-size: 20px;
+    padding: 20px;
+    width: 100%;
+    outline: none;
+    color: rgb(25, 20, 94);
+}
+
+.city__input-submit {
+    border: none;
+    width: 80px;
+    background-color: rgb(25, 20, 94);
+    background-image: url('../../images/search.svg');
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+    color: rgb(174, 206, 236);
+    padding: 20px;
+    cursor: pointer;
+}

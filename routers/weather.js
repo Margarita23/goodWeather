@@ -27,9 +27,13 @@ router.get('/', function(req, res){
 
             weather.create(response);
 
+            res.header('Access-Control-Allow-Origin', '*');
+
             res.json(response.data);
+            // res.send(req.params);
     }).catch(function (error) {
-        res.status(500).json({message: error});
+        // res.status(500).json({message: error});
+        res.status(500).send({message: error});
     });
 });
 
