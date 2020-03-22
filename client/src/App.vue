@@ -34,7 +34,6 @@ export default {
   .wrapper {
       display: flex;
       width: 100%;
-      height: 100vh;
       justify-content: center;
       font-family: Arial, Helvetica, sans-serif;
   }
@@ -44,6 +43,9 @@ export default {
       width: 500px;
       background-color: rgb(174, 206, 236);
       color: rgb(25, 20, 94);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
   }
 
   .title, .subtitle {
@@ -54,4 +56,32 @@ export default {
     margin: 0;
     padding: 0;
   }
+
+
+
+  #nav {
+  padding: 30px;
+  height: 90px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: underline;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+  text-decoration: none;
+}
+
+#nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
 </style>

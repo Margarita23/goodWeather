@@ -24,21 +24,17 @@ router.get('/', function(req, res){
 
     axios.get(url)
         .then(function (response) {
-
             weather.create(response);
-
             res.header('Access-Control-Allow-Origin', '*');
-
             res.json(response.data);
-            // res.send(req.params);
     }).catch(function (error) {
-        // res.status(500).json({message: error});
         res.status(500).send({message: error});
     });
 });
 
 // example http://localhost:4000/weather/getAllWeather?city=Dnipro
 router.get('/getAllWeather', function(req, res){
+    res.header('Access-Control-Allow-Origin', '*');
     weather.index(req.query.city, res);
 });
 

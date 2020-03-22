@@ -4,74 +4,73 @@
       <input placeholder="Enter name of the city" class="city__input-name" v-model="city" v-on:keyup.enter="getWeather()">
       <button class="city__input-submit" v-on:click="getWeather()"></button>
     </div>
-    <div class="info">
-      <div class="date"></div>
-      <div class="forecast">
-        <ul class="forecast__list">
-          <li class="forecast__morning">
-            <div class="tempreture"></div>
-            <div class="icon"></div>
-          </li>
-          <li class="forecast__now">
-            <div class="tempreture"></div>
-            <div class="icon"></div>
-          </li>
-          <li class="forecast__evening">
-            <div class="tempreture"></div>
-            <div class="icon"></div>
-          </li>
-        </ul>
-      </div>
-    </div>
     <hr>
-    <div>Info about weather: {{ message }}</div>
+    <line-chart :chart-data="datacollection"></line-chart>
   </div>
 </template>
  
 <script>
+  import LineChart from './LineChart.js'
+
   const axios = require('axios');
-  let API_URL = "";
+  // let API_URL = "";
+  let API_URL_GETALL = "";
  
   export default {
-    name: "home",
+    name: "weather",
+    components: {
+      LineChart
+    },
     data () {
       return {
         weather: {},
+        cityDates: [],
+        cityWeathers: [],
         message: "",
         city: "",
-        error: ""
+        error: "",
+
+        datacollection: null
       }
     },
-
-    // mounted() {
-    //   axios
-    //     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-    //     .then(response => (this.info = response));
-    // }
- 
-  mounted() {
-    // axios.get(API_URL)
-      // .then(response => {
-        // console.log("response");
-        // console.log(response.data);
-  //       // response.json();
-  //       })
-  //     // .then(result => {
-  //       // this.messages = result;
-      // });
-  },
-  methods: {
-    getWeather: function() {
-      API_URL = "http://localhost:4000/weather/?city=" + this.city;
-      this.message = this.city;
-      axios.get(API_URL)
-      .then(response => {
-        this.message = response.data;
-      });
-      API_URL = "";
+    mounted() {
+      this.fillData()
+    },
+    methods: {
+      getWeather: function() {
+        API_URL_GETALL = "http://localhost:4000/weather/getAllWeather?city=" + this.city;
+        this.message = this.city;
+        axios.get(API_URL_GETALL)
+        .then(response => {
+          this.cityDates = response.data.map(function(obj) {
+            var date = new Date(obj.data.dt*1000);
+            var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+            return str;
+          });
+          this.cityWeathers = response.data.map(function(obj) {
+            return obj.data.main.temp - 273.15;
+          });
+        API_URL_GETALL = "";
+        this.fillData(this.cityWeathers, this.cityDates);
+        });
+      },
+      fillData (days, weathers) {
+        this.datacollection = {
+          labels: weathers,
+          datasets: [
+            {
+              label: 'Data One',
+              borderColor: 'rgb(25, 20, 94)',
+              backgroundColor: 'transparent',
+              pointBorderColor: 'rgb(25, 20, 94)',
+              pointBackgroundColor: 'white',
+              data: days
+            }
+          ]
+        }
+      }
     }
-  }
-};
+  };
 </script>
  
 <style>
